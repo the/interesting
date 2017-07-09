@@ -1,0 +1,82 @@
+body {
+    font-family: helvetica, sans-serif;
+}
+nav {
+    font-size: 32px;
+    margin-left: 64px;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav li {
+    display: inline-block;
+}
+nav li a {
+    display: block;
+    padding: 16px 8px;
+    color: #aaa;
+    font-weight: 800;
+    text-decoration: none;
+}
+nav li a:hover {
+    color: #666;
+}
+nav li.selected a {
+    color: #222;
+}
+.docs ul {
+    padding: 0;
+}
+.docs li {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+.docs .vote {
+    margin-right: -14px;
+}
+.docs .vote input {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+    color: #ccc;
+    background-color: transparent;
+    border: none;
+}
+.docs li.interesting .vote input.interesting {
+    color: #222;
+}
+.docs li.boring .vote input.boring {
+    color: #222;
+}
+.docs .vote input:hover {
+    background-color: #bfefff;
+}
+.docs img {
+    flex: 0 0 36px;
+    position: relative;
+    right: -22px;
+    width: 36px;
+    height: 36px;
+    border-radius: 22px;
+    border: 4px solid #f2f2f2;
+    background-color: #f2f2f2;
+}
+.docs .content {
+    flex: 1 1 auto;
+    padding: 12px 12px 12px 28px;
+    background-color: #f2f2f2;
+}
+.docs li.new img, .docs li.new .content {
+    border-color: #bfefff;
+    background-color: #bfefff;
+}
+.docs a {
+    text-decoration: none;
+}
+.docs a:hover {
+    text-decoration: underline;
+}

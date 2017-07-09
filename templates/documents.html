@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title }}</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li class="{{ 'selected' if selected == 'interesting' else '' }}"><a href="/">interesting</a></li>
+                {% for source in sources %}
+                <li class="{{ 'selected' if selected == source else '' }}"><a href="/source/{{ source }}">{{ source }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="docs">
+            <ul>
+            {% for doc in docs %}
+                <li class="{{ 'new' if doc.new else '' }} {{ 'interesting' if doc.interesting == True else '' }} {{ 'boring' if doc.interesting == False else '' }}">
+                    <div class="vote">
+                        <form action="/interesting/{{ doc.source }}" method="post">
+                            <input type="hidden" name="interesting" value="yes">
+                            <input type="hidden" name="id" value="{{ doc.id }}">
+                            <input type="submit" value="▲" title="interesting" class="interesting">
+                        </form>
+                        <form action="/interesting/{{ doc.source }}" method="post">
+                            <input type="hidden" name="interesting" value="no">
+                            <input type="hidden" name="id" value="{{ doc.id }}">
+                            <input type="submit" value="▼" title="boring" class="boring">
+                        </form>
+                    </div>
+                    {% if doc.image_url %}
+                    <img src="{{ doc.image_url }}">
+                    {% endif %}
+                    <div class="content">
+                        <div>{{ doc.user }}</div>
+                        <div><a href="{{ doc.url }}" target="_blank">{{ doc.title }}</a></div>
+                        <div>Score: {{ doc.score }}</div>
+                    <div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </body>
+</html>
