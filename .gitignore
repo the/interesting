@@ -1,0 +1,4 @@
+__pycache__/
+env/
+dataset/
+.DS_Store
