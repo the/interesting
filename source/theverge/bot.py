@@ -43,17 +43,20 @@ class Bot(Thread):
         time.sleep(self.config['delay'])
 
         while True:
-            logger.info('Collecting articles')
+            try:
+                logger.info('Collecting articles')
 
-            new_article_count = 0
-            for article in get_articles():
-                if article.id not in self.articles:
-                    logger.debug('New article {}'.format(article))
-                    self.queue.put(article)
-                    self.remember_article(article)
-                    new_article_count = new_article_count + 1
+                new_article_count = 0
+                for article in get_articles():
+                    if article.id not in self.articles:
+                        logger.debug('New article {}'.format(article))
+                        self.queue.put(article)
+                        self.remember_article(article)
+                        new_article_count = new_article_count + 1
 
-            if new_article_count > 0:
-                logger.info('New {}'.format(new_article_count))
+                if new_article_count > 0:
+                    logger.info('New {}'.format(new_article_count))
+            except Exception as err:
+                logger.error('error: {}'.format(err))
 
             time.sleep(self.config['interval'])

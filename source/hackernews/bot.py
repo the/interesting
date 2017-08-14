@@ -57,17 +57,20 @@ class Bot(Thread):
         time.sleep(self.config['delay'])
 
         while True:
-            logger.info('Collecting stories')
+            try:
+                logger.info('Collecting stories')
 
-            new_story_count = 0
-            for story in get_stories(self.config['pages']):
-                if story.id not in self.stories:
-                    logger.debug('New story {}'.format(story))
-                    self.queue.put(story)
-                    self.remember_story(story)
-                    new_story_count = new_story_count + 1
+                new_story_count = 0
+                for story in get_stories(self.config['pages']):
+                    if story.id not in self.stories:
+                        logger.debug('New story {}'.format(story))
+                        self.queue.put(story)
+                        self.remember_story(story)
+                        new_story_count = new_story_count + 1
 
-            if new_story_count > 0:
-                logger.info('New {}'.format(new_story_count))
+                if new_story_count > 0:
+                    logger.info('New {}'.format(new_story_count))
+            except Exception as err:
+                logger.error('error: {}'.format(err))
 
             time.sleep(self.config['interval'])
