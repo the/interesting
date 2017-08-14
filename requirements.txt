@@ -2,9 +2,9 @@ beautifulsoup4==4.6.0
 feedparser==5.2.1
 Flask==0.12.2
 gevent==1.2.2
-numpy==1.13.0
+numpy==1.13.1
 PyYAML==3.12
-scikit-learn==0.18.2
+scikit-learn==0.19.0
 scipy==0.19.1
 tweepy==3.5.0
 matplotlib==2.0.2

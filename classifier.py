@@ -8,7 +8,7 @@ from sklearn.naive_bayes import MultinomialNB, BernoulliNB
 from sklearn.svm import LinearSVC, SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression, SGDClassifier
-from sklearn.model_selection import cross_val_score, train_test_split
+from sklearn.model_selection import cross_validate
 
 logger = logging.getLogger(__name__)
 
@@ -43,9 +43,13 @@ class Classifier:
         scores = defaultdict(dict)
 
         for name, pipeline in self.pipelines.items():
-            scores[name]['accuracy'] = cross_val_score(pipeline, self.X, self.y, cv=CV, scoring='accuracy').tolist()
-            scores[name]['precision'] = cross_val_score(pipeline, self.X, self.y, cv=CV, scoring='precision').tolist()
-            scores[name]['recall'] = cross_val_score(pipeline, self.X, self.y, cv=CV, scoring='recall').tolist()
+            cv_results = cross_validate(pipeline, self.X, self.y, cv=CV, scoring=('accuracy', 'precision', 'recall', 'f1'))
+            scores[name] = {
+                'accuracy': cv_results['test_accuracy'],
+                'precision': cv_results['test_precision'],
+                'recall': cv_results['test_recall'],
+                'f1': cv_results['test_f1']
+            }
 
         return dict(scores)
 
@@ -74,11 +78,11 @@ class Classifier:
             ]),
             'SGDClassifier.hinge': Pipeline([
                 ('vectorizer', TfidfVectorizer()),
-                ('classifier', SGDClassifier(loss='hinge'))
+                ('classifier', SGDClassifier(loss='hinge', max_iter=100))
             ]),
             'SGDClassifier.log': Pipeline([
                 ('vectorizer', TfidfVectorizer()),
-                ('classifier', SGDClassifier(loss='log'))
+                ('classifier', SGDClassifier(loss='log', max_iter=100))
             ]),
             'RandomForest': Pipeline([
                 ('vectorizer',  TfidfVectorizer()),
