@@ -36,7 +36,9 @@
                     <div class="content">
                         <div>{{ doc.user }}</div>
                         <div><a href="{{ doc.url }}" target="_blank">{{ doc.title }}</a></div>
+                        {% if doc.score %}
                         <div>Score: {{ doc.score }}</div>
+                        {% endif %}
                     <div>
                 </li>
             {% endfor %}
