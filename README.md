@@ -1,7 +1,9 @@
 Interesting
 ===========
 
-The idea behind _interesting_ is to collect tech news articles and tweets in one place and tag them as either interesting or not in order to filter out the content one is actually interested in.
+Collect tech news articles and tweets in one place and filter out the interesting content by tagging items as either interesting or boring (vote up/down).
+
+![Screenshot](docs/screenshot.png)
 
 Installation
 ------------
@@ -35,4 +37,9 @@ Execute `run.sh` (or see its content how to do it manually).
 
 Point your browser to http://localhost:5000.
 
-Content of the enabled sources will appear in the corresponding sections. By up- and downvoting items the systems learns the user's interests. For items to appear in the _interesting_ section one needs to have at least one upvote and one downvote (predicted interestingness, not upvoted). The more data is gathered the more accurate the prediction becomes (200+ tagged items for a data source is a good start).
+Content of the enabled sources will appear in the corresponding sections. By up- and downvoting items the systems learns the user's interests. For items to appear in the _interesting_ section for a particular data source one needs to have at least one upvote and one downvote. The more data is gathered the more accurate the prediction becomes (200+ tagged items for a data source is a good start).
+
+Classifier evaluation
+---------------------
+
+There is an extensible list of classifier pipelines defined in `classifier.py` that is used for evaluation. Run `python eval.py` to get cross validation metrics for each pipeline (precision, recall, etc.).
