@@ -33,6 +33,6 @@ Running the application
 
 Execute `run.sh` (or see its content how to do it manually).
 
-Point your browser to http://localhost:8000.
+Point your browser to http://localhost:5000.
 
 Content of the enabled sources will appear in the corresponding sections. By up- and downvoting items the systems learns the user's interests. For items to appear in the _interesting_ section one needs to have at least one upvote and one downvote (predicted interestingness, not upvoted). The more data is gathered the more accurate the prediction becomes (200+ tagged items for a data source is a good start).

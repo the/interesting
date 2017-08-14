@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import importlib, yaml, logging
+from gevent.wsgi import WSGIServer
 from flask import Flask, render_template, jsonify, request
 from queue import Queue
 from dataset import DataSet
@@ -57,3 +58,6 @@ def interesting(source):
             classifiers[source] = Classifier(dataset.all_documents)
             break
     return '{} -- {} -- {}'.format(source, doc_id, interesting)
+
+http_server = WSGIServer(('127.0.0.1', 5000), application)
+http_server.serve_forever()

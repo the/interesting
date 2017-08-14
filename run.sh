@@ -1,3 +1,3 @@
 #!/bin/sh
 source env/bin/activate
-gunicorn app
+python app.py
