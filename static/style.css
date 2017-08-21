@@ -58,6 +58,7 @@ nav li.selected a {
 .docs img {
     flex: 0 0 36px;
     position: relative;
+    z-index: 10;
     right: -22px;
     width: 36px;
     height: 36px;
@@ -67,6 +68,7 @@ nav li.selected a {
 }
 .docs .content {
     flex: 1 1 auto;
+    position: relative;
     padding: 12px 12px 12px 28px;
     background-color: #f2f2f2;
 }
@@ -79,4 +81,23 @@ nav li.selected a {
 }
 .docs a:hover {
     text-decoration: underline;
+}
+.docs .child {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+.docs .child img {
+    position: absolute;
+    left: 30px;
+    border-color: #e2e2e2;
+    background-color: #e2e2e2;
+}
+.docs .child .content {
+     margin-left: 22px;
+     background-color: #e2e2e2;
+}
+.docs li.new .child img, .docs li.new .child .content {
+    border-color: #afdfee;
+    background-color: #afdfee;
 }

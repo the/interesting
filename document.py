@@ -63,3 +63,7 @@ class Document():
         current = self._new
         self._new = False
         return current
+
+    @property
+    def children(self):
+        return []

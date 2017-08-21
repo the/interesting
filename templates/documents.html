@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>{{ title }}</title>
+        <meta name=viewport content="width=device-width,initial-scale=1">
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     </head>
     <body>
@@ -10,7 +11,7 @@
             <ul>
                 <li class="{{ 'selected' if selected == 'interesting' else '' }}"><a href="/">interesting</a></li>
                 {% for source in sources %}
-                <li class="{{ 'selected' if selected == source else '' }}"><a href="/source/{{ source }}">{{ source }}</a></li>
+                    <li class="{{ 'selected' if selected == source else '' }}"><a href="/source/{{ source }}">{{ source }}</a></li>
                 {% endfor %}
             </ul>
         </nav>
@@ -31,13 +32,24 @@
                         </form>
                     </div>
                     {% if doc.image_url %}
-                    <img src="{{ doc.image_url }}">
+                        <img src="{{ doc.image_url }}">
                     {% endif %}
                     <div class="content">
                         <div>{{ doc.user }}</div>
                         <div><a href="{{ doc.url }}" target="_blank">{{ doc.title }}</a></div>
+                        {% for child in doc.children %}
+                            <div class="child">
+                                {% if child.image_url %}
+                                    <img src="{{ child.image_url }}">
+                                {% endif %}
+                                <div class="content">
+                                    <div>{{ child.user }}</div>
+                                    <div><a href="{{ child.url }}" target="_blank">{{ child.title }}</a></div>
+                                </div>
+                            </div>
+                        {% endfor %}
                         {% if doc.score %}
-                        <div>Score: {{ doc.score }}</div>
+                            <div>Score: {{ doc.score }}</div>
                         {% endif %}
                     <div>
                 </li>
