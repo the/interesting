@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import importlib, yaml, logging
-from gevent.wsgi import WSGIServer
+from gevent.pywsgi import WSGIServer
 from flask import Flask, render_template, jsonify, request
 from queue import Queue
 from dataset import DataSet

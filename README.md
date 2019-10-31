@@ -16,8 +16,8 @@ If you are on macOS and use homebrew:
 
 Create virual environment and activate it:
 
-    python3 -m venv env
-    source env/bin/activate
+    python3 -m venv .env
+    source .env/bin/activate
 
 Install dependencies:
 

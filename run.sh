@@ -1,3 +1,3 @@
 #!/bin/sh
-source env/bin/activate
+source .env/bin/activate
 python app.py
