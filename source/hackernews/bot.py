@@ -26,7 +26,7 @@ def get_stories_of_page(page):
     if page:
         for story in page.find_all('tr', class_='athing'):
             story_id = int(story.attrs['id'])
-            story_link = story.find('a', class_='storylink')
+            story_link = story.find('a', class_='titlelink')
             url = story_link.attrs['href']
             title = story_link.text
             hnuser = story.next_sibling.find('a', class_='hnuser')

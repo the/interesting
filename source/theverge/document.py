@@ -16,7 +16,7 @@ class Document(document.Document):
 
     @property
     def image_url(self):
-        return 'https://cdn0.vox-cdn.com/images/verge/2.0/verge-icon-196x196.v503bbf1.png'
+        return 'https://cdn.freebiesupply.com/images/large/2x/the-verge-logo-transparent.png'
 
     @property
     def classification_text_items(self):

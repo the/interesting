@@ -16,7 +16,7 @@ class Document(document.Document):
 
     @property
     def image_url(self):
-        return 'http://www.ycombinator.com/images/ycombinator-logo-fb889e2e.png'
+        return 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Y_Combinator_Logo_400.gif'
 
     @property
     def classification_text_items(self):
