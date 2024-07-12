@@ -82,7 +82,7 @@ class Classifier:
             ]),
             'SGDClassifier.log': Pipeline([
                 ('vectorizer', TfidfVectorizer()),
-                ('classifier', SGDClassifier(loss='log', max_iter=100))
+                ('classifier', SGDClassifier(loss='log_loss', max_iter=100))
             ]),
             'RandomForest': Pipeline([
                 ('vectorizer',  TfidfVectorizer()),
