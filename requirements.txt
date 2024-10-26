@@ -17,6 +17,6 @@ setuptools==70.3.0
 sgmllib3k==1.0.0
 soupsieve==2.5
 threadpoolctl==3.5.0
-Werkzeug==3.0.3
+Werkzeug==3.0.6
 zope.event==5.0
 zope.interface==6.4.post2
